@@ -13,6 +13,7 @@ def get_movies(
         movies = movies.filter(genres__in=genres_ids)
     elif actors_ids:
         movies = movies.filter(actors__in=actors_ids)
+    movies = movies.distinct()
     return movies
 
 
