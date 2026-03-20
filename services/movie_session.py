@@ -13,3 +13,10 @@ def create_movie_sessions(
         cinema_hall=cinema_hall_id,
         movie=movie_id
     )
+
+def get_movies_sessions(session_date: str) -> QuerySet:
+    movie_sessions = MovieSession.objects.all()
+    if session_date:
+        parsed_date = datetime.date.strptime(session_date, '%Y-%m-%d')
+        movie_sessions = movie_sessions.filter(show_time__date=parsed_date)
+    return movie_sessions
