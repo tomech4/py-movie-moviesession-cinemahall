@@ -15,3 +15,19 @@ def get_movies(genres_ids: list[int] = None, actors: list[int] = None) -> QueryS
 
 def get_movie_by_id(movie_id: int) -> Movie:
     return Movie.objects.get(id=movie_id)
+
+def create_movie(
+        movie_title: str,
+        movie_description: str,
+        genres_ids: list[int] = None,
+        actors_ids: list[int] = None
+) -> Movie:
+    new_movie = Movie.objects.create(
+        title=movie_title,
+        description=movie_description
+    )
+    if genres_ids:
+        new_movie.genres.add(genres_ids)
+    if actors_ids:
+        new_movie.actors.add(actors_ids)
+    return new_movie
