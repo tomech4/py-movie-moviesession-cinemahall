@@ -20,3 +20,6 @@ def get_movies_sessions(session_date: str) -> QuerySet:
         parsed_date = datetime.date.strptime(session_date, '%Y-%m-%d')
         movie_sessions = movie_sessions.filter(show_time__date=parsed_date)
     return movie_sessions
+
+def get_movie_session_by_id(movie_session_id: int) -> MovieSession:
+    return MovieSession.objects.get(id=movie_session_id)
