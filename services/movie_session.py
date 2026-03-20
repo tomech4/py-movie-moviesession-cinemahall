@@ -14,7 +14,7 @@ def create_movie_sessions(
         movie=movie_id
     )
 
-def get_movies_sessions(session_date: str) -> QuerySet:
+def get_movies_sessions(session_date: str = None) -> QuerySet:
     movie_sessions = MovieSession.objects.all()
     if session_date:
         parsed_date = datetime.date.strptime(session_date, '%Y-%m-%d')
