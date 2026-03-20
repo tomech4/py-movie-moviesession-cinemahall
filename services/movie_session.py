@@ -39,3 +39,6 @@ def update_movie_session(
         movie_session.cinema_hall = cinema_hall_id
     movie_session.save()
     return movie_session
+
+def delete_movie_session_by_id(session_id: int) -> None:
+    MovieSession.objects.get(session_id).delete()
